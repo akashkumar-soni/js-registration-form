@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="registerForm">
+        <label>Name</label>
+        <input type="text" id="name">
+        <span class="error" id="nameError" style="color: red;"></span>
+
+        <label>Email</label>
+        <input type="email" class="email error-class">
+
+        <label>Password</label>
+        <input type="password">
+
+        <label>Gender</label>
+        <select id="gender">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <button id="registerBtn" type="submit">Register</button>
+    </form>
+    <div class="card test small" style="background-color: lightblue;">Card1</div>
+    <div class="card test" style="background-color: rgb(173, 177, 230);">Card2</div>
+    <div class="card" style="background-color: rgb(173, 177, 230);">Card3</div>
+    <!-- OUTPUT SECTION -->
+    <div class="output" id="output">
+        <h3>Entered Details</h3>
+        <p><strong>Name:</strong> <span id="outName"></span></p>
+        <p><strong>Email:</strong> <span id="outEmail"></span></p>
+        <p><strong>Password:</strong> <span id="outPassword"></span></p>
+        <p><strong>Gender:</strong> <span id="outGender"></span></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    // document.getElementById('registerBtn').addEventListener('click', function(event) {
+    //     let name = document.getElementById('name').value;
+    //     let email = document.getElementsByClassName('email')[0].value;
+    //     let password = document.getElementsByTagName('input')[2].value
+
+    //     let elem = document.querySelector(".card.test").textContent;
+    //     let elem2 = document.querySelectorAll(".card.test").length;
+    //     alert(elem2);
+    // });
+
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        let name = document.getElementById('name').value;
+
+        if (name === "") {
+            //alert("Name field cannot be empty");
+            document.getElementById('nameError').innerText = "Name is required";
+            return;
+        }
+
+        let email = document.getElementsByClassName('email')[0].value;
+        let password = document.getElementsByTagName('input')[2].value;
+        let select = document.getElementById('gender');
+        let gender= select.options[select.selectedIndex].text;
+    
+        document.getElementById('outName').innerText = name;
+        document.getElementById('outEmail').innerText = email;
+        document.getElementById('outPassword').innerText = password;
+        document.getElementById('outGender').innerText = gender;
+    });
+
+</script>
+
+</body>
+</html>
